@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>evdar | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2 id="welcome"></h2>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<div id="adminControls">
+  <label>Client:</label>
+  <select id="clientSelect">
+    <option value="car1.csv">Client 1</option>
+    <option value="car2.csv">Client 2</option>
+    <option value="car3.csv">Client 3</option>
+    <option value="car4.csv">Client 4</option>
+    <option value="car5.csv">Client 5</option>
+  </select>
+  <button onclick="loadSelectedClient()">Load</button>
+</div>
+
+<div class="range-box">
+  <label>From:</label>
+  <input type="datetime-local" id="fromTime">
+  <label>To:</label>
+  <input type="datetime-local" id="toTime">
+  <button onclick="loadByTimeRange()">Load Range</button>
+</div>
+
+<div class="card">
+  <h3>📈 Speed vs Time</h3>
+  <canvas id="speedChart"></canvas>
+</div>
+
+<div class="card">
+  <h3>🚨 Overspeed Count (>100 km/h)</h3>
+  <p id="overspeedCount">0</p>
+</div>
+
+<div class="table-container">
+  <table id="carTable"></table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

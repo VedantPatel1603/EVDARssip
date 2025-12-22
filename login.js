@@ -1,4 +1,5 @@
-const API = "https://YOUR-NGROK-URL.ngrok-free.dev";
+// 🔗 Backend API URL (ngrok)
+const API = "https://untempting-untemperamentally-renata.ngrok-free.dev";
 
 function login() {
   const username = document.getElementById("username").value.trim();
@@ -15,11 +16,13 @@ function login() {
     return res.json();
   })
   .then(data => {
+    // ✅ Store full user object expected by dashboard
     const user = {
-      username,
+      username: username,
       role: data.role,
-      car: data.car || "car1.csv"
+      car: data.car || null
     };
+
     localStorage.setItem("user", JSON.stringify(user));
     window.location.href = "dashboard.html";
   })
