@@ -1,0 +1,48 @@
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.login-bg {
+  height: 100vh;
+  background: linear-gradient(135deg,#1e3c72,#2a5298);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input, button {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+}
+
+button {
+  background: #2a5298;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+header {
+  background: #2a5298;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  margin: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
