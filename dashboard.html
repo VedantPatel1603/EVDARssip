@@ -1,51 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>evdar | Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+        <title>EVDAR — Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* Sidebar layout */
+            .app {
+                display: flex;
+                height: 100vh;
+            }
+            .sidebar {
+                width: 220px;
+                background: #1f3b73;
+                color: white;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .sidebar h3 { margin-top: 0 }
+            .nav a {
+                display: block;
+                color: #dbe9ff;
+                padding: 10px 8px;
+                margin: 6px 0;
+                text-decoration: none;
+                border-radius: 6px;
+            }
+            .nav a.active, .nav a:hover { background: rgba(255,255,255,0.06); color: white }
 
-<header>
-  <h2 id="welcome"></h2>
-  <button onclick="logout()">Logout</button>
-</header>
+            .content {
+                flex: 1;
+                padding: 20px;
+                overflow: auto;
+            }
 
-<div id="adminControls" style="display:none;">
-  <label>Client:</label>
-  <select id="clientSelect">
-    <option value="car1.csv">Client 1</option>
-    <option value="car2.csv">Client 2</option>
-    <option value="car3.csv">Client 3</option>
-    <option value="car4.csv">Client 4</option>
-    <option value="car5.csv">Client 5</option>
-  </select>
-  <button onclick="loadSelectedClient()">Load</button>
-</div>
+            /* small helpers used by scripts */
+            #controls { margin-bottom: 12px }
+            #carTable { width: 100%; border-collapse: collapse }
+            #carTable th, #carTable td { border: 1px solid #ddd; padding: 6px }
+            .speed-red { color: red; font-weight: bold }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script defer src="script.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <h3>EVDAR</h3>
+                <div id="welcome" style="font-size:14px;opacity:0.9">—</div>
+                <div class="nav" style="margin-top:18px">
+                    <a href="#overview" data-view="overview" class="active">Overview</a>
+                    <a href="#vehicle" data-view="vehicle">Vehicle Location</a>
+                    <a href="#help" data-view="help">Help</a>
+                    <a href="#contact" data-view="contact">Contact Us</a>
+                    <a href="#about" data-view="about">About</a>
+                    <!-- admin-only link; shown only when user is admin -->
+                    <a href="#admin" data-view="admin" class="admin-link" style="display:none;color:#ffdddd">Admin Page</a>
+                </div>
 
-<div class="range-box">
-  <label>From:</label>
-  <input type="datetime-local" id="fromTime">
-  <label>To:</label>
-  <input type="datetime-local" id="toTime">
-  <button onclick="loadByTimeRange()">Load Range</button>
-</div>
+                <!-- client select removed per request -->
 
-<div class="card">
-  <h3>📈 Speed vs Time</h3>
-  <canvas id="speedChart"></canvas>
-</div>
+                <div style="margin-top:18px">
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </aside>
 
-<div class="card">
-  <h3>🚨 Overspeed Count (>100 km/h)</h3>
-  <p id="overspeedCount">0</p>
-</div>
+            <main class="content">
+                <!-- Main content removed per request. Use this area for page content. -->
+                <div id="mainContent" style="padding:20px;color:#333">Select a page from the sidebar.</div>
+            </main>
+        </div>
 
-<div class="table-container">
-  <table id="carTable"></table>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
-</body>
+        <script>
+            // sidebar navigation: delegate to `renderView` in script.js
+            document.querySelectorAll('.nav a').forEach(a=>{
+                a.addEventListener('click', e=>{
+                    e.preventDefault();
+                    document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
+                    a.classList.add('active');
+                    const view = a.dataset.view;
+                    if (window.renderView) window.renderView(view);
+                });
+            });
+        </script>
+    </body>
 </html>

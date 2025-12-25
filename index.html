@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>evdar | Login</title>
-  <link rel="stylesheet" href="style.css">
+    <title>EVDAR | Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-bg">
 
-<div class="login-box">
-  <h2>🚗 evdar</h2>
-  <p class="tagline">Smart Vehicle Telemetry & Safety Platform</p>
+<body>
+    <div class="login-bg">
+        <form onsubmit="login(event)" class="login-box">
+            <h2>🚗 EVDAR</h2>
 
-  <input id="username" placeholder="Username">
-  <input id="password" type="password" placeholder="Password">
+            <input id="username" placeholder="Username" required>
+            <input id="password" type="password" placeholder="Password" required>
 
-  <button onclick="login()">Login</button>
-  <p id="error"></p>
-</div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 
-<script src="login.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
