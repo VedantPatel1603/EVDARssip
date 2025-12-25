@@ -8,9 +8,7 @@ async function login(event) {
         // the API is on the Flask server at port 5000. Use that base
         // URL so the request reaches the backend. When the frontend is
         // served by the Flask app itself, `API_BASE` can be an empty string.
-        const API_BASE = (location.hostname === "127.0.0.1" && location.port === "5500")
-            ? "http://127.0.0.1:5000"
-            : "";
+        const API_BASE = "https://untempting-untemperamentally-renata.ngrok-free.dev";
 
         const res = await fetch(API_BASE + "/login", {
             method: "POST",
