@@ -1,7 +1,0 @@
-user_id,username,password,role,car
-0,admin,admin@123,admin,
-101,user1,u1@456,user,car1.csv
-102,user2,u2@789,user,car2.csv
-103,user3,u3@321,user,car3.csv
-104,user4,u4@654,user,car4.csv
-105,user5,u5@987,user,car5.csv
